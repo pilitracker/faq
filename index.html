@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ – Pilik</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
+      background-color: #0e1624;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px 16px;
+    }
+
+    header img {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      margin-bottom: 16px;
+    }
+
+    header h1 {
+      font-size: 26px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 15px;
+      color: #b5becd;
+      margin-top: 4px;
+    }
+
+    .language-select {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    select {
+      background-color: #1b2536;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 8px 16px;
+      font-size: 15px;
+      appearance: none;
+      outline: none;
+    }
+
+    main {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    .faq-section {
+      background-color: #1b2536;
+      border-radius: 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      padding: 20px 24px;
+      margin-bottom: 16px;
+    }
+
+    .faq-question {
+      font-weight: 600;
+      font-size: 17px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+    }
+
+    .faq-question::before {
+      content: "💡";
+      color: #34c759;
+      font-size: 18px;
+      margin-right: 8px;
+    }
+
+    .faq-answer {
+      font-size: 15px;
+      color: #cfd6e3;
+      line-height: 1.55;
+      padding-left: 26px;
+    }
+
+    footer {
+      text-align: center;
+      color: #778196;
+      font-size: 13px;
+      padding: 40px 0 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="pill_icon.png" alt="Pilik Logo" />
+    <h1>FAQ</h1>
+    <p>Frequently asked questions about using Pilik</p>
+  </header>
+
+  <div class="language-select">
+    <select id="langSelect">
+      <option value="en">English</option>
+      <option value="cs">Čeština</option>
+      <option value="fr">Français</option>
+      <option value="de">Deutsch</option>
+      <option value="it">Italiano</option>
+      <option value="pl">Polski</option>
+      <option value="ru">Русский</option>
+      <option value="es">Español</option>
+      <option value="uk">Українська</option>
+    </select>
+  </div>
+
+  <main id="faqContainer"></main>
+
+  <footer>
+    Pilik © 2025 · All rights reserved
+  </footer>
+
+  <script>
+    const translations = {
+      en: [
+        { q: "How do I add a new medication?", a: "Tap the “+” button on the Medications or Schedule tab, choose the medication type, name, and strength, then set the time and frequency." },
+        { q: "Can I mark a dose as taken?", a: "Yes — swipe a reminder to the left and tap the green check button in the “Today” tab." },
+        { q: "How can I delete a reminder?", a: "Go to the “Schedule” section, switch to “List” view, then swipe left on a reminder to delete it." },
+        { q: "How can I edit a reminder?", a: "In the “Schedule” section, tap a reminder to edit its time, dosage, or frequency." },
+        { q: "Is my data secure?", a: "All your data is stored only on your device and is never synchronized or shared anywhere." },
+        { q: "Can I track multiple medications?", a: "Yes — you can add as many medications as you need, each with its own dosage and schedule." },
+      ],
+      cs: [
+        { q: "Jak přidám nový lék?", a: "Klepněte na tlačítko “+” v záložce Léky nebo Plán, vyberte typ léku, název a sílu, poté nastavte čas a frekvenci." },
+        { q: "Mohu označit dávku jako užitou?", a: "Ano — přejeďte připomenutí doleva a klepněte na zelené tlačítko se symbolem ✓ v záložce “Dnes”." },
+        { q: "Jak mohu odstranit připomenutí?", a: "Přejděte do sekce “Plán”, přepněte na zobrazení “Seznam” a přejeďte doleva, abyste připomenutí odstranili." },
+        { q: "Jak mohu upravit připomenutí?", a: "V sekci “Plán” klepněte na připomenutí a upravte čas, dávkování nebo frekvenci." },
+        { q: "Jsou moje data v bezpečí?", a: "Všechna data jsou uložena pouze ve vašem zařízení a nejsou nikam odesílána ani sdílena." },
+        { q: "Mohu sledovat více léků?", a: "Ano — můžete přidat libovolný počet léků, každý s vlastní dávkou a plánem." },
+      ],
+      fr: [
+        { q: "Comment ajouter un nouveau médicament ?", a: "Appuyez sur le bouton “+” dans l’onglet Médicaments ou Planning, choisissez le type, le nom et la dose, puis définissez l’heure et la fréquence." },
+        { q: "Puis-je marquer une dose comme prise ?", a: "Oui — balayez le rappel vers la gauche et appuyez sur le bouton vert avec ✓ dans l’onglet “Aujourd’hui”." },
+        { q: "Comment supprimer un rappel ?", a: "Allez dans la section “Planning”, passez en vue “Liste” puis balayez vers la gauche pour supprimer." },
+        { q: "Comment modifier un rappel ?", a: "Dans la section “Planning”, touchez un rappel pour modifier l’heure, la dose ou la fréquence." },
+        { q: "Mes données sont-elles sécurisées ?", a: "Toutes vos données sont stockées uniquement sur votre appareil et ne sont jamais partagées ni synchronisées." },
+        { q: "Puis-je suivre plusieurs médicaments ?", a: "Oui — vous pouvez ajouter autant de médicaments que nécessaire, chacun avec sa propre dose et planification." },
+      ],
+      de: [
+        { q: "Wie füge ich ein neues Medikament hinzu?", a: "Tippe auf die “+”-Taste im Reiter Medikamente oder Zeitplan, wähle Typ, Name und Stärke und lege dann Zeit und Häufigkeit fest." },
+        { q: "Kann ich eine Dosis als eingenommen markieren?", a: "Ja — wische eine Erinnerung nach links und tippe auf den grünen Haken im Tab “Heute”." },
+        { q: "Wie kann ich eine Erinnerung löschen?", a: "Gehe zum Abschnitt “Zeitplan”, wechsle zur “Liste”-Ansicht und wische nach links, um sie zu löschen." },
+        { q: "Wie kann ich eine Erinnerung bearbeiten?", a: "Im Abschnitt “Zeitplan” tippe auf eine Erinnerung, um Zeit, Dosis oder Häufigkeit zu ändern." },
+        { q: "Sind meine Daten sicher?", a: "Alle Daten werden nur auf deinem Gerät gespeichert und nirgends synchronisiert oder geteilt." },
+        { q: "Kann ich mehrere Medikamente verfolgen?", a: "Ja — du kannst beliebig viele Medikamente mit eigenen Dosierungen und Zeiten hinzufügen." },
+      ],
+      it: [
+        { q: "Come posso aggiungere un nuovo farmaco?", a: "Tocca il pulsante “+” nella scheda Farmaci o Pianificazione, scegli il tipo, il nome e la dose, quindi imposta ora e frequenza." },
+        { q: "Posso segnare una dose come presa?", a: "Sì — scorri il promemoria verso sinistra e tocca il pulsante verde con ✓ nella scheda “Oggi”." },
+        { q: "Come posso eliminare un promemoria?", a: "Vai nella sezione “Pianificazione”, cambia in vista “Elenco” e scorri verso sinistra per eliminarlo." },
+        { q: "Come posso modificare un promemoria?", a: "Nella sezione “Pianificazione”, tocca un promemoria per modificare orario, dose o frequenza." },
+        { q: "I miei dati sono sicuri?", a: "Tutti i dati sono archiviati solo sul tuo dispositivo e non vengono mai condivisi o sincronizzati." },
+        { q: "Posso tenere traccia di più farmaci?", a: "Sì — puoi aggiungere quanti farmaci vuoi, ciascuno con la propria dose e pianificazione." },
+      ],
+      pl: [
+        { q: "Jak dodać nowy lek?", a: "Dotknij przycisku “+” w zakładce Leki lub Harmonogram, wybierz typ, nazwę i dawkę, a następnie ustaw czas i częstotliwość." },
+        { q: "Czy mogę oznaczyć dawkę jako przyjętą?", a: "Tak — przesuń przypomnienie w lewo i dotknij zielonego przycisku ✓ w zakładce “Dzisiaj”." },
+        { q: "Jak usunąć przypomnienie?", a: "Przejdź do sekcji “Harmonogram”, przełącz na widok “Lista” i przesuń w lewo, aby usunąć przypomnienie." },
+        { q: "Jak edytować przypomnienie?", a: "W sekcji “Harmonogram” dotknij przypomnienia, aby zmienić godzinę, dawkę lub częstotliwość." },
+        { q: "Czy moje dane są bezpieczne?", a: "Wszystkie dane są przechowywane tylko na Twoim urządzeniu i nie są nigdzie wysyłane ani udostępniane." },
+        { q: "Czy mogę śledzić wiele leków?", a: "Tak — możesz dodać dowolną liczbę leków, każdy z własną dawką i harmonogramem." },
+      ],
+      ru: [
+        { q: "Как добавить новое лекарство?", a: "Нажмите «+» в разделе Лекарства или Расписание, выберите тип, название и дозу, затем установите время и частоту." },
+        { q: "Можно ли отметить приём как выполненный?", a: "Да — свайпните напоминание влево и нажмите зелёную кнопку с галочкой во вкладке «Сегодня»." },
+        { q: "Как удалить напоминание?", a: "Перейдите в раздел «Расписание», выберите режим «Список» и свайпните напоминание влево, чтобы удалить его." },
+        { q: "Как отредактировать напоминание?", a: "В разделе «Расписание» нажмите на напоминание, чтобы изменить время, дозу или частоту." },
+        { q: "Безопасны ли мои данные?", a: "Все данные хранятся только на вашем устройстве и не синхронизируются ни с какими серверами." },
+        { q: "Можно ли отслеживать несколько лекарств?", a: "Да — вы можете добавить любое количество лекарств, каждое со своей дозировкой и расписанием." },
+      ],
+      es: [
+        { q: "¿Cómo agrego un nuevo medicamento?", a: "Toca el botón “+” en la pestaña Medicamentos o Calendario, elige el tipo, nombre y dosis, luego establece la hora y frecuencia." },
+        { q: "¿Puedo marcar una dosis como tomada?", a: "Sí — desliza el recordatorio hacia la izquierda y toca el botón verde con ✓ en la pestaña “Hoy”." },
+        { q: "¿Cómo elimino un recordatorio?", a: "Ve a la sección “Calendario”, cambia a la vista “Lista” y desliza hacia la izquierda para eliminarlo." },
+        { q: "¿Cómo edito un recordatorio?", a: "En la sección “Calendario”, toca un recordatorio para editar la hora, dosis o frecuencia." },
+        { q: "¿Mis datos están seguros?", a: "Todos tus datos se almacenan solo en tu dispositivo y nunca se comparten ni sincronizan." },
+        { q: "¿Puedo seguir varios medicamentos?", a: "Sí — puedes agregar tantos medicamentos como necesites, cada uno con su propia dosis y horario." },
+      ],
+      uk: [
+        { q: "Як додати нові ліки?", a: "Натисніть «+» у вкладці Ліки або Розклад, виберіть тип, назву та дозування, а потім встановіть час і частоту." },
+        { q: "Чи можу я позначити прийом як виконаний?", a: "Так — проведіть нагадування вліво та натисніть зелену кнопку з ✓ у вкладці «Сьогодні»." },
+        { q: "Як видалити нагадування?", a: "Перейдіть у розділ «Розклад», перемкніться у вигляд «Список» і проведіть вліво, щоб видалити нагадування." },
+        { q: "Як редагувати нагадування?", a: "У розділі «Розклад» натисніть на нагадування, щоб змінити час, дозу або частоту." },
+        { q: "Чи безпечні мої дані?", a: "Усі ваші дані зберігаються лише на вашому пристрої та не синхронізуються з будь-якими серверами." },
+        { q: "Чи можна відстежувати кілька ліків?", a: "Так — ви можете додати скільки завгодно ліків, кожне з власним дозуванням і розкладом." },
+      ]
+    };
+
+    const faqContainer = document.getElementById("faqContainer");
+    const langSelect = document.getElementById("langSelect");
+
+    function renderFAQ(lang) {
+      faqContainer.innerHTML = "";
+      translations[lang].forEach(item => {
+        const section = document.createElement("section");
+        section.className = "faq-section";
+        section.innerHTML = `<div class="faq-question">${item.q}</div><div class="faq-answer">${item.a}</div>`;
+        faqContainer.appendChild(section);
+      });
+    }
+
+    langSelect.addEventListener("change", (e) => renderFAQ(e.target.value));
+    renderFAQ("en");
+  </script>
+</body>
+</html>
