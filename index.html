@@ -215,7 +215,16 @@
     }
 
     langSelect.addEventListener("change", (e) => renderFAQ(e.target.value));
-    renderFAQ("en");
+
+    // support ?lang=xx
+    const params = new URLSearchParams(window.location.search);
+    const lp = params.get("lang");
+    const browserLang = navigator.language.slice(0,2);
+    const defaultLang = translations[browserLang] ? browserLang : "en";
+    const activeLang  = translations[lp] ? lp : defaultLang;
+
+    renderFAQ(activeLang);
+    langSelect.value = activeLang;
   </script>
 </body>
 </html>
